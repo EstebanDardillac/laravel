@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    public function scopeInDateRange($query, $startDate, $endDate)
+    {
+        return $query->whereBetween('timestamp', [$startDate, $endDate]);
+    }
 }
